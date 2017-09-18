@@ -1,1 +1,10 @@
 <h1>Hello World</h1>
+<ul>
+    {{#each articles}} 
+    <ul>
+        <li>TITLE: {{this.title}} </li>
+        <li>AUTHOR:  {{this.byline}} </li>
+        <li>SUMMARY:  {{this.summary}} </li>
+    </ul>
+    {{/each}}
+</ul>

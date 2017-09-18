@@ -37,8 +37,34 @@ app.use(express.static("public"));
 app.engine("handlebars", exphbs({ defaultLayout: "main" }));
 app.set("view engine", "handlebars");
 
+// Database configuration with mongoose
+var promise = mongoose.connect('mongodb://localhost/scrapingapp', {
+    useMongoClient: true,
+    /* other options */
+  });
+var db = mongoose.connection;
+
+// Show any mongoose errors
+db.on("error", function(error) {
+  console.log("Mongoose Error: ", error);
+});
+
+// Once logged in to the db through mongoose, log a success message
+db.once("open", function() {
+  console.log("Mongoose connection successful.");
+});
+
 app.get('/', function (req, res) {
-    res.render('index');
+    var articlesObj = {};
+    Article.find({}, function(err, articles) {
+        if (err) { 
+            console.log(err);
+        } else { 
+            articlesObj.articles = articles;
+            console.log(articlesObj.articles[0].title);
+            res.render('index', articlesObj);
+        }
+    })
 });
 
 app.get("/scrape", function(req, res) {
@@ -87,29 +113,9 @@ app.get("/scrape", function(req, res) {
     res.send("Scrape Complete");
 });
 
-
 // // Routing 
 // var scraperoutes = require("./routes/scrapecontroller.js");
 // app.use('/scrape', scraperoutes);
-
-
-// Database configuration with mongoose
-var promise = mongoose.connect('mongodb://localhost/scrapingapp', {
-    useMongoClient: true,
-    /* other options */
-  });
-var db = mongoose.connection;
-
-
-// Show any mongoose errors
-db.on("error", function(error) {
-  console.log("Mongoose Error: ", error);
-});
-
-// Once logged in to the db through mongoose, log a success message
-db.once("open", function() {
-  console.log("Mongoose connection successful.");
-});
 
 app.listen(PORT, function() {
     console.log("Listening on port: ", PORT);
