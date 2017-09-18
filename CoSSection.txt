@@ -1,0 +1,112 @@
+<section id="special_section" class="col article-section">
+
+    <h3 class="bordered slammed">
+        Vietnam War documentary
+    </h3>
+
+    <div id="page-area-feature-lead" class="page-area lead-story editable" data-page-area="feature-lead" data-max-items="1">
+    <article data-id="83682" class="clearfix placed analysis published">
+            <figure>
+    <a class="article-link" href="/how-the-pentagon-tried-to-cure-america-of-its-vietnam-syndrome-83682">
+    <img src="https://theconversation.imgix.net/files/186097/original/file-20170914-9021-1w45zl0.jpg?ixlib=rb-1.1.0&amp;q=45&amp;auto=format&amp;w=1012&amp;h=668&amp;fit=crop" alt="" data-id="186097">
+</a>
+                <figcaption>
+                    <span class="caption">
+          A couple watch film footage of the Vietnam war on a television in their living room.
+        </span>
+                    <span class="source" title="Source">Library of Congress</span>
+                </figcaption>
+            </figure>
+
+            <header>
+
+
+
+                <h2><a href="/how-the-pentagon-tried-to-cure-america-of-its-vietnam-syndrome-83682">How the Pentagon tried to cure America of its ‘Vietnam&nbsp;syndrome’</a></h2>
+
+                <p class="byline">
+                    <span><a href="https://theconversation.com/profiles/paul-joseph-406514">Paul Joseph</a>, <em>Tufts University</em></span>
+                </p>
+
+            </header>
+
+            <div class="content" data-raw="">
+                <span>After footage from America's first 'living room war' shocked the public, the government would clamp down on media coverage of future military conflicts.</span>
+            </div>
+        </article>
+
+    </div>
+
+
+
+
+    <div id="page-area-feature" class="page-area b-format editable" data-page-area="feature" data-max-items="10">
+
+
+
+        <article data-id="83258" class="clearfix placed analysis published">
+
+            <header>
+
+
+
+                <h2><a href="/vietnam-war-who-was-right-about-what-went-wrong-and-why-it-matters-in-afghanistan-83258">Vietnam War: Who was right about what went wrong – and why it matters in&nbsp;Afghanistan</a></h2>
+
+                <p class="byline">
+                    <span><a href="https://theconversation.com/profiles/david-skidmore-404183">David Skidmore</a>, <em>Drake University</em></span>
+                </p>
+
+            </header>
+
+            <div class="content" data-raw="">
+                <span>Was Vietnam 'a quagmire' or a 'stalemate machine'? Understanding this 50-year-old debate can shed light on why the US is currently locked into a 'forever war.'</span>
+            </div>
+        </article>
+
+
+        <article data-id="83021" class="clearfix placed analysis published">
+
+            <header>
+
+
+
+                <h2><a href="/how-vietnam-dramatically-changed-our-views-on-honor-and-war-83021">How Vietnam dramatically changed our views on honor and&nbsp;war</a></h2>
+
+                <p class="byline">
+                    <span><a href="https://theconversation.com/profiles/richard-lachmann-141878">Richard Lachmann</a>, <em>University at Albany, State University of New York</em></span>
+                </p>
+
+            </header>
+
+            <div class="content" data-raw="">
+                <span>Is there honor in a losing battle? The US military faced this question in Vietnam. Its response would eventually change how the media covered war and how Americans perceive it.</span>
+            </div>
+        </article>
+
+
+        <article data-id="83702" class="clearfix placed analysis published">
+
+            <header>
+
+
+
+                <h2><a href="/during-vietnam-war-music-spoke-to-both-sides-of-a-divided-nation-83702">During Vietnam War, music spoke to both sides of a divided&nbsp;nation</a></h2>
+
+                <p class="byline">
+                    <span><a href="https://theconversation.com/profiles/lauren-rebecca-sklaroff-382232">Lauren Rebecca Sklaroff</a>, <em>University of South Carolina</em></span>
+                </p>
+
+            </header>
+
+            <div class="content" data-raw="">
+                <span>Musicians were able to connect with confused, scared and angry Americans – including those who supported the war – in a way actors, broadcasters and writers could not.</span>
+            </div>
+        </article>
+
+    </div>
+
+    <p class="more">
+        <a class="button" href="/topics/vietnam-war-documentary-43367">More</a>
+    </p>
+
+</section>
