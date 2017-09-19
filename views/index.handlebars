@@ -1,50 +1,107 @@
 <nav class="navbar navbar-dark bg-dark" role="navigation">
-    	<div class="container-fluid">
-			<div class="navbar navbar-expand-lg navbar-dark bg-dark">
-			<button type="button" class="navbar-toggler collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
-			<span class="sr-only">Intellectualist</span>
-			<span class="icon-bar"></span>
-			<span class="icon-bar"></span>
-			<span class="icon-bar"></span>
-			</button>
-				<a class="navbar-brand" href="#">Intellectualist</a>
-			</div>
-			<div id="navbar" class="collapse navbar-collapse">
-				<ul class="nav navbar-nav">
-					<li class="active"><a href="">Home</a></li>
-					<li><a href="">About</a></li>
-				</ul>
-				<ul class="nav navbar-nav navbar-right">
-                    <li class="dropdown">
-                        <a href="/register" class="dropdown-toggle" data-toggle="dropdown">Register <span class="caret"></span></a>
-                        <ul class="dropdown-menu dropdown-lr animated flipInX" role="menu">
-                            <div class="col-lg-12">
-                                <div class="text-center"><h3><b>Register</b></h3></div>
-								<form id="ajax-register-form" action="http://phpoll.com/register/process" method="post" role="form" autocomplete="off">
-									<div class="form-group">
-										<input type="text" name="username" id="username" tabindex="1" class="form-control" placeholder="Username" value="">
-									</div>
-									<div class="form-group">
-										<input type="email" name="email" id="email" tabindex="1" class="form-control" placeholder="Email Address" value="">
-									</div>
-									<div class="form-group">
-										<input type="password" name="password" id="password" tabindex="2" class="form-control" placeholder="Password">
-									</div>
-									<div class="form-group">
-										<input type="password" name="confirm-password" id="confirm-password" tabindex="2" class="form-control" placeholder="Confirm Password">
-									</div>
-									<div class="form-group">
-										<div class="row">
-											<div class="col-xs-6 col-xs-offset-3">
-												<input type="submit" name="register-submit" id="register-submit" tabindex="4" class="form-control btn btn-info" value="Register Now">
-											</div>
-										</div>
-									</div>
-                                    <input type="hidden" class="hide" name="token" id="token" value="7c6f19960d63f53fcd05c3e0cbc434c0">
-								</form>
+    <div class="container-fluid">
+        <div class="navbar navbar-expand-lg navbar-dark bg-dark">
+            <a class="navbar-brand ml-2" href="#">Intellectualist</a>
+            <button type="button" class="navbar-toggler collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+                <span class="sr-only">Intellectualist</span>
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            
+            <ul class="navbar-nav">
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Register</a>
+                    <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                        <form style="width: 500px; padding:20px" class="col">
+                            <div class="form-row">
+                                <div class="form-group col-md-6">
+                                <label for="firstname" class="col-form-label">First Name</label>
+                                <input type="text" class="form-control" id="firstname" placeholder="First Name">
+                                </div>
+                                <div class="form-group col-md-6">
+                                <label for="lastname" class="col-form-label">Last Name</label>
+                                <input type="text" class="form-control" id="lastname" placeholder="Last Name">
+                                </div>
                             </div>
-                        </ul>
-                    </li>
+                            <div class="form-row">
+                                <div class="form-group col-md-12">
+                                    <label for="inputEmail4" class="col-form-label">Email</label>
+                                    <input type="email" class="form-control" id="inputEmail4" placeholder="Email">
+                                </div>
+                            </div>
+                            <div class="form-row">
+                                <div class="form-group col-md-12">
+                                    <label for="inputPassword4" class="col-form-label">Password</label>
+                                    <input type="password" class="form-control" id="inputPassword4" placeholder="Password">
+                                </div>
+                            </div>
+                            <button id="register" type="submit" class="btn btn-primary">Register</button>
+                        </form>
+                    </div>
+                </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Login</a>
+                    <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                        <form style="width: 500px; padding:20px" class="col">
+                            <div class="form-row">
+                                <div class="form-group col-md-12">
+                                    <label for="inputEmail4" class="col-form-label">Email</label>
+                                    <input type="email" class="form-control" id="inputEmail4" placeholder="Email">
+                                </div>
+                            </div>
+                            <div class="form-row">
+                                <div class="form-group col-md-12">
+                                    <label for="inputPassword4" class="col-form-label">Password</label>
+                                    <input type="password" class="form-control" id="inputPassword4" placeholder="Password">
+                                </div>
+                            </div>
+                            <button id="login" type="submit" class="btn btn-primary">Register</button>
+                        </form>
+                    </div>
+                </li>                
+            </ul>
+
+        </div>
+    </div>
+</nav>
+<section class="jumbotron text-center">
+    <div class="container">
+        <h1 class="jumbotron-heading">The Intellectualist </h1>
+        <p class="lead text-muted">News with an academia perspective</p>
+        <p>
+            <button id="update" class="btn btn-primary">Update Headlines</button>
+        </p>
+    </div>
+</section>
+<div class="container">
+    <div class="row">
+        <div class="card-deck">
+        {{#each articles}}
+            <div class="col-4 col-md-6 col-sm-12 col-xs-12 d-flex align-items-stretch mb-2">
+                <div class="card ">
+                    {{!-- <img class="card-img-top" src="..." alt="Card image cap"> --}}
+                    <h4 class="card-header"><i class="fa fa-newspaper-o fw" aria-hidden="true"></i>  {{this.title}}</h4>
+                    <div class="card-body">
+                        
+                        {{#if this.byline}}
+                        <p class="card-text">By {{this.byline}} </p>
+                        {{/if}}
+                        <p class="card-text"> {{this.summary}}</p>
+                    </div>
+                    <div class="card-footer .d-inline-flex">
+                          <a class="btn btn-primary " href="{{this.link}}" target="_blank">Read Article</a> 
+                          {{!-- <p id="bookmark"><i  class="fa fa-bookmark" aria-hidden="true"></i> Save</p> --}}
+                    </div>
+                </div>
+            </div>
+        {{/each}}
+        </div>
+    </div>
+</div> 
+
+
+
+{{!-- 
+
                     <li class="dropdown">
                         <a href="http://phpoll.com/login" class="dropdown-toggle" data-toggle="dropdown">Log In <span class="caret"></span></a>
                         <ul class="dropdown-menu dropdown-lr animated slideInRight" role="menu">
@@ -87,41 +144,5 @@
                             </div>
                         </ul>
                     </li>
-                </ul>
-			</div>
-		</div>
-	</nav>
-<section class="jumbotron text-center">
-    <div class="container">
-        <h1 class="jumbotron-heading">The Intellectualist </h1>
-        <p class="lead text-muted">News with an academia perspective</p>
-        <p>
-            <button id="update" class="btn btn-primary">Update Headlines</button>
-        </p>
-    </div>
-</section>
-<div class="container">
-    <div class="row">
-        <div class="card-deck">
-        {{#each articles}}
-            <div class="col-4 col-md-4 col-sm-12 d-flex align-items-stretch mb-2">
-                <div class="card ">
-                    {{!-- <img class="card-img-top" src="..." alt="Card image cap"> --}}
-                    <h4 class="card-header"><i class="fa fa-newspaper-o fw" aria-hidden="true"></i>  {{this.title}}</h4>
-                    <div class="card-body">
-                        
-                        {{#if this.byline}}
-                        <p class="card-text">By {{this.byline}} </p>
-                        {{/if}}
-                        <p class="card-text"> {{this.summary}}</p>
-                    </div>
-                    <div class="card-footer .d-inline-flex">
-                          <a class="btn btn-primary " href="{{this.link}}" target="_blank">Read Article</a> 
-                          {{!-- <p id="bookmark"><i  class="fa fa-bookmark" aria-hidden="true"></i> Save</p> --}}
-                    </div>
-                </div>
-            </div>
-        {{/each}}
-        </div>
-    </div>
-</div>
+
+ --}}
