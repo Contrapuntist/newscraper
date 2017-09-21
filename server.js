@@ -116,8 +116,8 @@ db.once("open", function() {
 // Routing 
 var scraperoutes = require("./routes/scrapecontroller.js");
 app.use('/', scraperoutes);
-// app.use('/scrape', scraperoutes);
-// app.use('/update', scraperoutes);
+app.use('/scrape', scraperoutes);
+app.use('/update', scraperoutes);
 
 app.listen(PORT, function() {
     console.log("Listening on port: ", PORT);

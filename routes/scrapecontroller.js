@@ -1,6 +1,8 @@
 var express = require("express");
 var router = express.Router();
 var Article = require("../models/Article.js");
+var request = require('request');
+var cheerio = require('cheerio');
 
 console.log('in scrape controller module');
 
