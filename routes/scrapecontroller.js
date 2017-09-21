@@ -8,15 +8,15 @@ console.log('in scrape controller module');
 
 router.get('/', function (req, res) {
     var articlesObj = {};
-    Article.find({}, function(err, articles) {
+    Article.find({}).sort({dateCreated: -1}).limit(20).exec(function(err, articles) {
         if (err) { 
             console.log(err);
         } else { 
             articlesObj.articles = articles;
-            console.log(articlesObj.articles[0].title);
+            // console.log(articlesObj.articles[0].title);
             res.render('index', articlesObj);
         }
-    })
+    });
 });
 
 router.get("/scrape", function(req, res) {
@@ -25,6 +25,9 @@ router.get("/scrape", function(req, res) {
     request("https://theconversation.com/us", function(error, response, html) {
     // Then, we load that into cheerio and save it to $ for a shorthand selector
     console.log('in cheerio call');
+    if (error) {
+        console.log(error);
+    }
     var $ = cheerio.load(html);
     // console.log(html);
         // Defining content to scrape from site
@@ -39,7 +42,7 @@ router.get("/scrape", function(req, res) {
             result.byline = $(this).find('p span').text();
             result.link = 'https://theconversation.com' + $(this).find('h2 a').attr("href");
             result.summary = $('div.content').first().text();
-            
+            result.dateCreated = Date.now();
 
             console.log('***********************          Results Entry       *****************************************************');
             console.log(result);
@@ -62,7 +65,8 @@ router.get("/scrape", function(req, res) {
         });
     });
     // Tell the browser that we finished scraping the text
-    res.redirect('/');
+    // res.redirect('/');
+    res.send('scrape completed');
 });
 
 router.get('/update', function(req, res) { 

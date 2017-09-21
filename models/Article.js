@@ -25,6 +25,10 @@ var ArticleSchema = new Schema ({
         type: String,
         trim: true,
         required: true
+    }, 
+    dateCreated: {
+        type: Date,
+        required: true
     }
 
 }) 

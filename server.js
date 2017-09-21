@@ -11,12 +11,12 @@ var logger = require("morgan");
 var mongoose = require("mongoose");
 var PORT = process.env.PORT || 3000;
 
-// Requiring our Note and Article models
-var Article = require("./models/Article.js");
+// // Requiring our Note and Article models
+// var Article = require("./models/Article.js");
 
-// Our scraping tools
-var request = require("request");
-var cheerio = require("cheerio");
+// // // Our scraping tools
+// var request = require("request");
+// var cheerio = require("cheerio");
 
 // Set mongoose to leverage built in JavaScript ES6 Promises
 mongoose.Promise = Promise;
