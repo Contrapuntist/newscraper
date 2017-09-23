@@ -34,9 +34,9 @@ app.set("view engine", "handlebars");
 // Database configuration with mongoose
 var databaseUri = 'mongodb://localhost/scrapingapp';
 if (process.env.MONGODB_URI) { 
-  mongoose.connect(process.env.MONGODB_URI)
+  var promise = mongoose.connect(process.env.MONGODB_URI)
 } else {
-  var promise = mongoose.connect('mongodb://localhost/scrapingapp', {
+  var promise = mongoose.connect(databaseUri, {
     useMongoClient: true,
     /* other options */
   });
