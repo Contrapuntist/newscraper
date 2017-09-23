@@ -1,7 +1,7 @@
 <nav class="navbar navbar-dark bg-dark" role="navigation">
     <div class="container-fluid">
         <div class="navbar navbar-expand-lg navbar-dark bg-dark">
-            <a class="navbar-brand ml-2" href="#">Intellectualist</a>
+            <a class="navbar-brand ml-2" href="/">Intellectualist</a>
             <button type="button" class="navbar-toggler collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
                 <span class="sr-only">Intellectualist</span>
                 <span class="navbar-toggler-icon"></span>
@@ -63,21 +63,20 @@
         </div>
     </div>
 </nav>
-{{#if articles}}
+{{#if savedarticle}}
 <section class="jumbotron text-center">
     <div class="container">
         <h1 class="jumbotron-heading">The Intellectualist </h1>
         <h2 class="lead text-muted">News with an academia perspective</h2>
         <p>
-            <a href="/scrape" class="btn btn-primary">Update Headlines</a> 
-            <a href="/savedarticles" class="btn btn-primary">Saved Headlines</a>
+            <a href="/scrape" class="btn btn-primary">Update Headlines</a>
         </p>
     </div>
 </section>
 <div class="container-fluid">
     <div class="row">
         <div class="card-deck">
-        {{#each articles}}
+        {{#each savedarticle}}
             <div class="col-4 col-md-6 col-sm-12 col-xs-12 d-flex align-items-stretch mb-2">
                 <div class="card">
                     {{!-- <img class="card-img-top" src="..." alt="Card image cap"> --}}
@@ -105,10 +104,10 @@
         <h1 class="jumbotron-heading">The Intellectualist </h1>
         <h2 class="lead text-muted">News with an academia perspective</h2>
         
-        <h3>Uh oh. Don't fret. We don't have articles for you to read.</h3>
-        <p>Click 'Get Headlines' button below and we'll find you something great to read from smart people.</p>
+        <h3>Oops! You haven't saved any articles yet.</h3>
+        <p>Why don't you go find some articles worth saving and then come back!</p>
         <p>
-            <a id="update" href="/scrape" class="btn btn-primary">Get Headlines</a>
+            <a href="/" class="btn btn-primary">Save Some Headlines</a>
         </p>
     </div>
 </div>
