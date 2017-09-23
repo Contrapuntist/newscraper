@@ -11,12 +11,6 @@ var logger = require("morgan");
 var mongoose = require("mongoose");
 var PORT = process.env.PORT || 3000;
 
-// // Requiring our Note and Article models
-// var Article = require("./models/Article.js");
-
-// // // Our scraping tools
-// var request = require("request");
-// var cheerio = require("cheerio");
 
 // Set mongoose to leverage built in JavaScript ES6 Promises
 mongoose.Promise = Promise;
@@ -38,10 +32,15 @@ app.engine("handlebars", exphbs({ defaultLayout: "main" }));
 app.set("view engine", "handlebars");
 
 // Database configuration with mongoose
-var promise = mongoose.connect('mongodb://localhost/scrapingapp', {
+var databaseUri = 'mongodb://localhost/scrapingapp';
+if (process.env.MONGODB_URI) { 
+  mongoose.connect(process.env.MONGODB_URI)
+} else {
+  var promise = mongoose.connect('mongodb://localhost/scrapingapp', {
     useMongoClient: true,
     /* other options */
   });
+}
 var db = mongoose.connection;
 
 // Show any mongoose errors
