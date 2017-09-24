@@ -113,7 +113,7 @@ router.post('/newcomment', function(req, res) {
             console.log(doc);
         }
     }); 
-
+    res.sendStatus(200, 'New comment saved to database');
 }); 
 
 // *******************************************************

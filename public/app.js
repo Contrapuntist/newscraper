@@ -33,7 +33,9 @@ $(document).ready(function () {
         commentData.commentText = $('#commentCopy').val();
         commentData.articleID = id;
         console.log(commentData);
-        $.post("/newcomment", commentData);
+        $.post("/newcomment", commentData, function (data) { 
+            console.log(data);
+        });
         $('.noteModal').modal('hide');
     }); 
 
