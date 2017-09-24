@@ -12,14 +12,17 @@
                     <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Register</a>
                     <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
                         <form style="width: 500px; padding:20px" class="col">
-                            <div class="form-row">
+                            <div>
+                                <small><b>Coming Soon</b></small> 
+                            </div> 
+                            <div class="form-row">   
                                 <div class="form-group col-md-6">
-                                <label for="firstname" class="col-form-label">First Name</label>
-                                <input type="text" class="form-control" id="firstname" placeholder="First Name">
+                                    <label for="firstname" class="col-form-label">First Name</label>
+                                    <input type="text" class="form-control" id="firstname" placeholder="First Name">
                                 </div>
                                 <div class="form-group col-md-6">
-                                <label for="lastname" class="col-form-label">Last Name</label>
-                                <input type="text" class="form-control" id="lastname" placeholder="Last Name">
+                                    <label for="lastname" class="col-form-label">Last Name</label>
+                                    <input type="text" class="form-control" id="lastname" placeholder="Last Name">
                                 </div>
                             </div>
                             <div class="form-row">
@@ -42,7 +45,10 @@
                     <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Login</a>
                     <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
                         <form style="width: 500px; padding:20px" class="col">
-                            <div class="form-row">
+                            <div>
+                                <small><b>Coming Soon</b></small> 
+                            </div>  
+                            <div class="form-row">                         
                                 <div class="form-group col-md-12">
                                     <label for="inputEmail4" class="col-form-label">Email</label>
                                     <input type="email" class="form-control" id="inputEmail4" placeholder="Email">
@@ -54,7 +60,7 @@
                                     <input type="password" class="form-control" id="inputPassword4" placeholder="Password">
                                 </div>
                             </div>
-                            <button id="login" type="submit" class="btn btn-primary">Register</button>
+                            <button id="login" type="submit" class="btn btn-primary">Login</button>
                         </form>
                     </div>
                 </li>                
@@ -89,7 +95,9 @@
                         <p class="card-text"> {{this.summary}}</p>
                     </div>
                     <div class="card-footer .d-inline-flex">
-                          <a class="btn btn-primary " href="{{this.link}}" target="_blank">Read Article</a> 
+                          <a class="btn btn-primary" href="{{this.link}}" target="_blank">Read Article</a>
+                          <a savedArtId="{{this._id}}" class="btn btn-primary newcomment" href="#">Add Comment</a>
+                          <a class="btn btn-primary" href="#">View Comment(s)</a>  
                     </div>
                 </div>
             </div>
@@ -111,3 +119,25 @@
     </div>
 </div>
 {{/if}}
+
+<div class="modal noteModal">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">New Comment</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+          <div class="form-group">
+            <textarea class="form-control" id="commentCopy" rows="3" placeholder="Comment Text"></textarea>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-primary addComment">Save Comment</button>
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>

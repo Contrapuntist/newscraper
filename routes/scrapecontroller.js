@@ -2,6 +2,7 @@ var express = require("express");
 var router = express.Router();
 var Article = require("../models/Article.js");
 var Saved = require("../models/Saved.js");
+var Comment = require('../models/Comment');
 var request = require('request');
 var cheerio = require('cheerio');
 var handlebars = require('express-handlebars');
@@ -40,7 +41,7 @@ router.get('/savedarticles', function(req, res) {
 });
 
 router.get('/savearticle/:articleid', function(req, res) { 
-    Article.findOne({"title": req.params.articleid}).exec(function(err, article) { 
+    Article.findOne({"_id": req.params.articleid}).exec(function(err, article) { 
 
         var articletosave = {};
         
@@ -86,12 +87,34 @@ router.get("/scrape", function(req, res) {
         res.redirect('/');
     });
 
-});
+}); 
 
 // Route to update headlines in database
 router.get('/update', function(req, res) { 
     res.redirect('/scrape');
 });
+
+router.post('/newcomment', function(req, res) { 
+    
+    console.log(req.body);
+    var commentData = {};
+    commentData.comment = req.body.commentText;
+    commentData.articleId = req.body.articleId; 
+
+    var savingCommentData = new Comment(commentData);
+    
+    savingCommentData.save(function(err, doc) {
+        // Log any errors
+        if (err) {
+            console.log(err);
+        }
+        // Or log the doc
+        else {
+            console.log(doc);
+        }
+    }); 
+
+}); 
 
 // *******************************************************
 // HELPER ROUTING FUNCTIONS; uSED TO IMPROVE SYNCHROUNOUS ISSUES 
