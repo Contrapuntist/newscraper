@@ -63,7 +63,7 @@
         </div>
     </div>
 </nav>
-{{#if savedarticle}}
+{{#if savedarticles}}
 <section class="jumbotron text-center">
     <div class="container">
         <h1 class="jumbotron-heading">The Intellectualist </h1>
@@ -76,7 +76,7 @@
 <div class="container-fluid">
     <div class="row">
         <div class="card-deck">
-        {{#each savedarticle}}
+        {{#each savedarticles}}
             <div class="col-4 col-md-6 col-sm-12 col-xs-12 d-flex align-items-stretch mb-2">
                 <div class="card">
                     {{!-- <img class="card-img-top" src="..." alt="Card image cap"> --}}
@@ -90,7 +90,6 @@
                     </div>
                     <div class="card-footer .d-inline-flex">
                           <a class="btn btn-primary " href="{{this.link}}" target="_blank">Read Article</a> 
-                          <button class="btn btn-primary savearticle" href="#" articleID="{{this._id}}"><i  class="fa fa-bookmark" aria-hidden="true"></i> Save</button>
                     </div>
                 </div>
             </div>

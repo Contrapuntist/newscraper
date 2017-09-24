@@ -4,23 +4,26 @@ var Schema = mongoose.Schema;
 var Saved = new Schema ({
     
     title: { 
-        type: Schema.Types.ObjectId,
-        ref: "Article"
-    },
+        type: String,
+        trim: true,
+        required: true
+    }, 
 
     byline: { 
-        type: Schema.Types.ObjectId,
-        ref: "Article"
+        type: String,
+        trim: true
     },
 
-    summary: {
-        type: Schema.Types.ObjectId,
-        ref: "Article"
-    },
+    link: { 
+        type: String,
+        trim: true,
+        required: true,
+    }, 
 
-    link: {
-        type: Schema.Types.ObjectId,
-        ref: "Article"
+    summary: { 
+        type: String,
+        trim: true,
+        required: true
     }, 
 
 });

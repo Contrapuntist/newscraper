@@ -5,8 +5,10 @@ var Saved = require("../models/Saved.js");
 var request = require('request');
 var cheerio = require('cheerio');
 var handlebars = require('express-handlebars');
+var mongoose = require('mongoose');
 
 console.log('in scrape controller module');
+
 
 // Homepage route which renders handlebars index
 router.get('/', function (req, res) {
@@ -25,35 +27,33 @@ router.get('/', function (req, res) {
 router.get('/savedarticles', function(req, res) { 
     var savedArticlesObj = {}; 
     Saved.find({}, function(err, savedarticles) { 
+        
+        savedArticlesObj.savedarticles = savedarticles; 
+        
         if (err) { 
             console.log(err);
         } else { 
-            if (savedarticles) { 
-                savedArticlesObj.savedarticles = savedarticles; 
-                res.render('saved', savedarticles);
-            } else { 
-                res.render('saved');
-            }
+            console.log(savedArticlesObj.savedarticles)
+            res.render('saved', savedArticlesObj);
         }
     });
 });
 
 router.get('/savearticle/:articleid', function(req, res) { 
-    Article.find({_id: req.params.articleid}).exec(function(err, article) { 
-        
-        var article = {};
+    Article.findOne({"title": req.params.articleid}).exec(function(err, article) { 
+
+        var articletosave = {};
         
         // Add the text and href of every link, and save them as properties of the result object
-        // result.section = $(this).html();
-        article.title = article.title;
-        article.byline = article.byline;
-        article.link = article.link;
-        article.summary = article.summary;
+        articletosave.title = article.title;
+        articletosave.byline = article.byline;
+        articletosave.link = article.link;
+        articletosave.summary = article.summary;
        
-        var savedarticle = new Saved(article);
-        
+        var savedarticle = new Saved(articletosave);
+
             // Now, save that entry to the db
-            Saved.save(function(err, doc) {
+            savedarticle.save(function(err, doc) {
                 // Log any errors
                 if (err) {
                     console.log(err);
@@ -65,26 +65,44 @@ router.get('/savearticle/:articleid', function(req, res) {
             }); 
 
         console.log('*********  Ready to save article  *********  ');
-        console.log(article);
+        console.log(savedarticle);
     })
     res.redirect('/savedarticles');
 });
 
+
+router.get("/refresh", function(req, res) { 
+    console.log('in refresh'); 
+    emptyArticlesCollection(function() {
+        res.redirect('/scrape');
+    }); 
+});
+
 // Scraping route
 router.get("/scrape", function(req, res) {
-    if (Article) { 
-        Article.remove();
-    } 
     console.log('in scrape call');
+
     cheerioscrape(function() { 
         res.redirect('/');
     });
+
 });
 
 // Route to update headlines in database
 router.get('/update', function(req, res) { 
     res.redirect('/scrape');
 });
+
+// *******************************************************
+// HELPER ROUTING FUNCTIONS; uSED TO IMPROVE SYNCHROUNOUS ISSUES 
+// IN SOME ROUTES DEALING WITH DATABASE MANIPULATION
+// *******************************************************
+
+// function to empty collection 
+function emptyArticlesCollection(cb) { 
+    mongoose.connection.collections.articles.deleteMany();
+    return cb();        
+}
 
 // function with cb; cb using to sync page refresh
 function cheerioscrape(cb) { 
@@ -131,11 +149,8 @@ function cheerioscrape(cb) {
         });
     });
 
-    cb();
+    return cb();
 }
 
-function sendresponse () { 
-    console.log('woohoo');
-}
 
 module.exports = router;

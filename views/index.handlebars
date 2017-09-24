@@ -69,7 +69,7 @@
         <h1 class="jumbotron-heading">The Intellectualist </h1>
         <h2 class="lead text-muted">News with an academia perspective</h2>
         <p>
-            <a href="/scrape" class="btn btn-primary">Update Headlines</a> 
+            <a href="/refresh" class="btn btn-primary">Update Headlines</a> 
             <a href="/savedarticles" class="btn btn-primary">Saved Headlines</a>
         </p>
     </div>
@@ -91,7 +91,7 @@
                     </div>
                     <div class="card-footer .d-inline-flex">
                           <a class="btn btn-primary " href="{{this.link}}" target="_blank">Read Article</a> 
-                          <button class="btn btn-primary savearticle" href="#" articleID="{{this._id}}"><i  class="fa fa-bookmark" aria-hidden="true"></i> Save</button>
+                          <button class="btn btn-primary savearticle" href="#" articleID="{{this.title}}"><i  class="fa fa-bookmark" aria-hidden="true"></i> Save</button>
                     </div>
                 </div>
             </div>
